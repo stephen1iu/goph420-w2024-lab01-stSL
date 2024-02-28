@@ -6,7 +6,7 @@ def integrate_newton(x,f,alg="trap"):
     Inputs
     ------
     x: x value of coordinates
-    f: function value of x coordinates 
+    f: function value at x coordinates 
     alg: optional string (default="trap"), str of "simp"
 
     Returns
@@ -54,4 +54,3 @@ def integrate_gauss(f, lims, npts):
     float
     """
 
-    
