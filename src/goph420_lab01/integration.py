@@ -39,7 +39,6 @@ def integrate_newton(x,f,alg="trap"):
             for i in range (2,N-1,2):
                 sumx[1]+=f[i]
             integral=1/3*intervals*(f[0]+4*sumx[0]+2*sumx[1]+f[N-1])
-            #np.array([[2*x[i]**2-3*x[i]+1, 4*x[i]-4*x[i]**2, 2*x[i]**2-x[i]]])
         return integral
     else:
         raise ValueError ("Invalid algorithm entered, expected 'simp' or 'trap'")
@@ -48,7 +47,7 @@ def integrate_gauss(f, lims, npts):
     """
     Inputs
     ------
-    f: callable (just like function ex x^2)
+    f: callable 
     lims: upper and lower bounds of integration 
     npts: optional (default=3), int of 1,2,3,4,5
 
