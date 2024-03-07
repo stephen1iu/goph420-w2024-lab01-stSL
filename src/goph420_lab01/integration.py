@@ -83,7 +83,7 @@ def integrate_gauss(f, lims, npts):
         raise ValueError ("invalid value of npts, expected 1, 2, 3, 4, 5")
     
     mappoints=((a+b)+points*(b-a))/2.0
+    weights=((b-a)/2)*weights
     for i in range (0,n):
         integral+=weights[i]*f(mappoints[i])
-    integral*=(b-a)/2.0
     return integral

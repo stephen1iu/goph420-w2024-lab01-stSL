@@ -22,3 +22,6 @@ class TestGaussLegendre(unittest.TestCase):
         pass
     def test_npts5(self):
         pass
+
+if __name__=="__main__":
+    unittest.main()
