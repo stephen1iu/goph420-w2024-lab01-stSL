@@ -8,20 +8,30 @@ import numpy as np
 class TestGaussLegendre(unittest.TestCase):
     
     def setUp(self):
-        lims=np.array([0,8])
-        self.f=
-
+        self.lims=np.array([0,8])
 
     def test_npts1(self):
-        
+        #n=1
+        def f(x):
+            return x+1
+        integrate_gauss(f, self.lims, 1)
+
     def test_npts2(self):
-        pass
+        #n=3
+        def f(x):
+            return x**3+2*x**2+x+1
     def test_npts3(self):
-        pass
+        #n=5
+        def f(x):
+            return 
     def test_npts4(self):
-        pass
+        #n=7
+        def f(x):
+            return 
     def test_npts5(self):
-        pass
+        #n=9
+         def f(x):
+            return 
 
 if __name__=="__main__":
     unittest.main()

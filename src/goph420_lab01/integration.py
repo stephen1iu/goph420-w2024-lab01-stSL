@@ -56,12 +56,18 @@ def integrate_gauss(f, lims, npts):
     """
     if len(lims)!=2:
         raise ValueError (f"dimensions of limit array is {len(lims)}, expected: 2")
-    a=float(lims[0])
-    b=float(lims[1])
+    a=int(lims[0])
+    b=int(lims[1])
+    npts=int(npts)
+    integral=0
 
     n=2*npts-1
 
-    if npts==2:
+    if npts==1:
+        points=[0.0]
+        weights=[2.0]
+
+    elif npts==2:
         points=[-1/np.sqrt(3), 1/np.sqrt(3)]
         weights=[1.0, 1.0]
 
@@ -82,8 +88,12 @@ def integrate_gauss(f, lims, npts):
     else:
         raise ValueError ("invalid value of npts, expected 1, 2, 3, 4, 5")
     
-    mappoints=((a+b)+points*(b-a))/2.0
-    weights=((b-a)/2)*weights
+    transpoints=np.array([0])
+    transweights=np.array([0])
+
+    for i in range (0, npts):
+        transpoints[i]=((a+b)+(b-a)*points[i])/2.0
+        transweights[i]=((b-a)/2)*weights[i]
     for i in range (0,n):
-        integral+=weights[i]*f(mappoints[i])
+        integral+=transweights[i]*f(transpoints[i])
     return integral
