@@ -55,8 +55,8 @@ def integrate_gauss(f, lims, npts):
     """
     if len(lims)!=2:
         raise ValueError (f"dimensions of limit array is {len(lims)}, expected: 2")
-    a=int(lims[0])
-    b=int(lims[1])
+    a=lims[0]
+    b=lims[1]
     npts=int(npts)
     integral=0
 
