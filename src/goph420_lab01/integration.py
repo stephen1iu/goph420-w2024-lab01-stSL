@@ -21,12 +21,11 @@ def integrate_newton(x,f,alg="trap"):
     if len(x.shape)==2 or len(f.shape)==2:
         raise ValueError ("array must be 1D, x or f is a 2D array")
     integral=0
-    intervals=N//2
-    sumx=np.array([0,0])
     if alg=="trap":
         for i in range (0,N-1):
             integral+=((x[i+1]-x[i])/2)*(f[i+1]+f[i])
         return integral
+    
     elif alg=="simp":
         #even case
         if N>=3 and N % 2==0:
