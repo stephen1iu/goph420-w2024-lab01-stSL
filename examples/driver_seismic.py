@@ -6,26 +6,33 @@ import matplotlib.pyplot as plt
 def main():
 
     s_wave_data=np.loadtxt(fname="s_wave_data.txt")
-    t=s_wave_data[:,0]
-    v=s_wave_data[:,1]
+    t_raw=s_wave_data[:,0]
+    v_raw=s_wave_data[:,1]
 
-    plt.plot(t, v, label="Velocity(mm/s) vs. Time(s)")
-    plt.xlabel("Time(s)")
-    plt.ylabel("Velocity(mm/s)")
-    plt.title("Raw Velocity Time Data")
-    plt.savefig("../figures/raw_data.png")
-    plt.close("all")
-
-    max_v=max(np.abs(v))
+    max_v=max(np.abs(v_raw))
     v_last=max_v*0.005
 
     for i in range (0,1001):
-        if v[i] > v_last:
+        if v_raw[i] > v_last:
             index_max=i
 
-    T=t[index_max]
-    t=t[:index_max]
-    v=v[:index_max]
+    plot_t=[t_raw[0], t_raw[index_max]]
+    plot_v=[v_raw[0], v_raw[index_max]]
+
+    T=t_raw[index_max]
+    t=t_raw[:index_max]
+    v=v_raw[:index_max]
+
+    print(plot_t, plot_v)
+
+    plt.plot(t_raw, v_raw, label="velocity vs time")
+    plt.plot(plot_t, plot_v, "ro", label="bounds of integration")
+    plt.xlabel("Time(s)")
+    plt.ylabel("Velocity(mm/s)")
+    plt.title("Raw Velocity Time Data")
+    plt.legend()
+    plt.savefig("../figures/raw_data.png")
+    plt.close("all")
 
     int_trap_arr=[[], [], [], [], []]
     int_simp_arr=[[], [], [], [], []]

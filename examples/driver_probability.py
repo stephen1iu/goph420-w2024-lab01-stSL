@@ -31,12 +31,10 @@ def main():
 
     for i in (npts):
         integral_arr2.append(integrate_gauss(prob2, lims1, npts=i))
-        print(integral_arr2)
     
     for j in range (0, len(npts)-1):
         eps_a2.append(np.abs((integral_arr2[j+1]-integral_arr2[j])/integral_arr2[j+1]))
     
-
     plt.loglog(npts[:-1], eps_a1, label="seismic")
     plt.loglog(npts[:-1], eps_a2, label="length")
     plt.xscale("log")
